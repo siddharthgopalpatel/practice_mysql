@@ -2,17 +2,14 @@ version: "3.7"
 
 services:
   sp-mysql:
-    #image: mysql/mysql-server:8.0.20
-    build:
-      context: sp-mysql/
-      Dockerfile: .
+    image: mysql/mysql-server:8.0.20
     container_name: sp-mysql
     volumes:
       - type: volume
         source: mysql-volume
         target: /var/lib/mysql
-	environment:
-		MYSQL_ROOT_PASSWORD: "abc123"
+    environment:
+      MYSQL_ROOT_PASSWORD: "abc123"
     ports:
       - "3306:3306"
     networks:
@@ -27,8 +24,8 @@ services:
         target: /etc/phpmyadmin/config.user.inc.php
     ports:
       - "82:80"
-	links:
-		- sp-mysql:db
+    links:
+      - sp-mysql:db
     networks:
       - mysql_network
 
