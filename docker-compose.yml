@@ -7,8 +7,8 @@ services:
     volumes:
       - type: volume
         source: mysql-volume
-        target: /var/lib/mysql
-      - customer.csv:/home/customer.csv
+        target: /var/lib/mysql  
+      - ./database_files:/home/database_files
     environment:
       MYSQL_ROOT_PASSWORD: "abc123"
     ports:
@@ -37,5 +37,5 @@ networks:
 volumes:
   mysql-volume:
   phpadmin_volume:
-  customer.csv:
+  database_files:
 
